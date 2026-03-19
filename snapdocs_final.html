@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- ═══ SEO META TAGS ═══ -->
+<title>SnapDocs – Free Online Document & Photo Tools | Passport Photos, Scanner, Editor</title>
+<meta name="description" content="Free online tools for passport photos, document scanning, image editing, background removal, PDF conversion, QR codes, and more. No signup required. 100% private – files never leave your device.">
+<meta name="keywords" content="passport photo maker, document scanner, background remover, image compressor, image converter, photo enhancer, ID card generator, watermark tool, QR code generator, PDF tools, online photo editor, free image tools">
+<meta name="author" content="SnapDocs">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1e">
+<link rel="canonical" href="https://your-site.netlify.app/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://your-site.netlify.app/">
+<meta property="og:title" content="SnapDocs – Free Online Document & Photo Tools">
+<meta property="og:description" content="Passport photos, document scanning, background removal, image editing & 12+ free tools. Works in your browser – 100% private.">
+<meta property="og:image" content="https://placehold.co/1200x630/0b1120/3b82f6?text=SnapDocs">
+<meta property="og:site_name" content="SnapDocs">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://your-site.netlify.app/">
+<meta name="twitter:title" content="SnapDocs – Free Online Document & Photo Tools">
+<meta name="twitter:description" content="Passport photos, document scanning, background removal & 12+ tools. Free, private, instant.">
+<meta name="twitter:image" content="https://placehold.co/1200x630/0b1120/3b82f6?text=SnapDocs">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SnapDocs",
+  "url": "https://your-site.netlify.app",
+  "description": "Free online document and photo tools including passport photo maker, document scanner, background remover, and more.",
+  "applicationCategory": "Utilities",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Passport Photo Maker","Document Scanner","Background Remover","Image Compressor","Image Converter","Photo Enhancer","ID Card Generator","Watermark Tool","QR Code Generator","Color Picker","Image Cropper","Noise Reducer"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════
+   DESIGN SYSTEM
+══════════════════════════════════════ */
+:root {
+  --bg:       #060a14;
+  --bg2:      #0b1120;
+  --surface:  #101828;
+  --surface2: #16202e;
+  --surface3: #1c2a3a;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  --text:     #e4ecf7;
+  --text2:    #8fa3bc;
+  --text3:    #556575;
+  --blue:     #3b82f6;
+  --cyan:     #06b6d4;
+  --emerald:  #10b981;
+  --amber:    #f59e0b;
+  --rose:     #f43f5e;
+  --violet:   #8b5cf6;
+  --accent:   #3b82f6;
+  --glow:     rgba(59,130,246,0.15);
+  --radius:   16px;
+  --radius-sm:10px;
+  --radius-lg:24px;
+  --shadow:   0 4px 24px rgba(0,0,0,0.4);
+  --shadow-lg:0 16px 64px rgba(0,0,0,0.5);
+  --trans:    0.2s cubic-bezier(0.4,0,0.2,1);
+  --font:     'Outfit', sans-serif;
+  --mono:     'JetBrains Mono', monospace;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+img { max-width: 100%; }
+button { font-family: var(--font); cursor: pointer; }
+input, select, textarea { font-family: var(--font); }
+a { text-decoration: none; color: inherit; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 99px; }
+
+/* ── Selection ── */
+::selection { background: rgba(59,130,246,0.3); color: #fff; }
+
+/* ══════════════════════════════════════
+   BACKGROUND MESH
+══════════════════════════════════════ */
+.bg-mesh {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 600px 500px at 10% 20%, rgba(59,130,246,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 400px at 90% 80%, rgba(139,92,246,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 50% 50%, rgba(6,182,212,0.03) 0%, transparent 70%);
+}
+
+/* ══════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 64px;
+  background: rgba(6,10,20,0.8);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  padding: 0 clamp(1rem,4vw,2.5rem);
+  gap: 1rem;
+}
+.nav-logo {
+  font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  white-space: nowrap; flex-shrink: 0;
+}
+.nav-logo span { -webkit-text-fill-color: #fff; opacity: 0.6; font-weight: 300; }
+
+.nav-search {
+  flex: 1; max-width: 380px; margin: 0 auto;
+  position: relative;
+}
+.nav-search input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 50px; color: var(--text);
+  padding: 8px 16px 8px 40px;
+  font-size: 0.85rem;
+  transition: border-color var(--trans), box-shadow var(--trans);
+}
+.nav-search input::placeholder { color: var(--text3); }
+.nav-search input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+.nav-search-icon {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  color: var(--text3); font-size: 0.9rem; pointer-events: none;
+}
+
+.nav-actions { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.nav-btn {
+  padding: 8px 18px; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 600;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  color: #fff; border: none;
+  transition: opacity var(--trans), transform var(--trans);
+  white-space: nowrap;
+}
+.nav-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.hamburger {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none; border: none; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 99px;
+  transition: all var(--trans);
+}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 100px clamp(1rem,5vw,3rem) 60px;
+  position: relative; z-index: 1;
+  overflow: hidden;
+}
+.hero-orb {
+  position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px);
+}
+.hero-orb-1 { width: 500px; height: 500px; top: -100px; left: -100px; background: rgba(59,130,246,0.08); }
+.hero-orb-2 { width: 400px; height: 400px; bottom: -80px; right: -80px; background: rgba(139,92,246,0.07); }
+.hero-orb-3 { width: 300px; height: 300px; top: 40%; left: 40%; background: rgba(6,182,212,0.05); }
+
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 50px; padding: 6px 16px 6px 10px;
+  font-size: 0.78rem; font-weight: 600; color: #93c5fd;
+  letter-spacing: 0.3px; margin-bottom: 2rem;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-pill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  font-weight: 900; line-height: 1.0;
+  letter-spacing: -3px;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero h1 .line2 {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 40%, #8b5cf6 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-desc {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--text2); max-width: 560px;
+  line-height: 1.7; margin-bottom: 2.5rem;
+  animation: fadeUp 0.7s 0.2s ease both;
+  font-weight: 400;
+}
+.hero-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  animation: fadeUp 0.7s 0.3s ease both;
+  margin-bottom: 4rem;
+}
+.btn-hero-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 50px;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: #fff; font-size: 0.95rem; font-weight: 700;
+  border: none;
+  box-shadow: 0 8px 32px rgba(59,130,246,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform var(--trans), box-shadow var(--trans);
+}
+.btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(59,130,246,0.4); }
+.btn-hero-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 50px;
+  background: transparent; color: var(--text2);
+  font-size: 0.95rem; font-weight: 600;
+  border: 1px solid var(--border2);
+  transition: all var(--trans);
+}
+.btn-hero-ghost:hover { border-color: var(--blue); color: var(--text); background: rgba(59,130,246,0.05); }
+
+.hero-stats {
+  display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center;
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+.hero-stat { text-align: center; }
+.hero-stat-num {
+  font-size: 1.8rem; font-weight: 800; letter-spacing: -1px;
+  background: linear-gradient(135deg, #fff, var(--text2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-stat-label { font-size: 0.8rem; color: var(--text3); margin-top: 2px; }
+
+/* ══════════════════════════════════════
+   SECTION WRAPPER
+══════════════════════════════════════ */
+.section {
+  position: relative; z-index: 1;
+  max-width: 1320px; margin: 0 auto;
+  padding: 60px clamp(1rem,4vw,2.5rem);
+}
+.section-header { margin-bottom: 3rem; }
+.section-eyebrow {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
+  color: var(--cyan); text-transform: uppercase; margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-eyebrow::before { content:''; width:20px; height:2px; background:var(--cyan); border-radius:99px; }
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 800; letter-spacing: -1.5px;
+  line-height: 1.1; margin-bottom: 0.6rem;
+}
+.section-sub { color: var(--text2); font-size: 1rem; max-width: 500px; }
+
+/* ══════════════════════════════════════
+   SEARCH BAR (hero)
+══════════════════════════════════════ */
+.tools-search-wrap {
+  margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.tools-search {
+  flex: 1; min-width: 260px;
+  position: relative;
+}
+.tools-search input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  color: var(--text); padding: 12px 16px 12px 46px;
+  font-size: 0.95rem;
+  transition: border-color var(--trans), box-shadow var(--trans);
+}
+.tools-search input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+.tools-search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text3); }
+
+.filter-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-chip {
+  padding: 7px 16px; border-radius: 50px;
+  font-size: 0.8rem; font-weight: 600;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text2); cursor: pointer;
+  transition: all var(--trans);
+}
+.filter-chip:hover, .filter-chip.active {
+  background: var(--blue); border-color: var(--blue);
+  color: #fff; box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+}
+
+/* ══════════════════════════════════════
+   TOOL CARDS GRID
+══════════════════════════════════════ */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: transform var(--trans), border-color var(--trans), box-shadow var(--trans);
+  display: flex; flex-direction: column; gap: 0;
+}
+.tool-card::after {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent);
+  opacity: 0; transition: opacity var(--trans);
+  pointer-events: none;
+}
+.tool-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border2);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,0.06);
+}
+.tool-card:hover::after { opacity: 1; }
+.tool-card:active { transform: translateY(-2px); }
+
+.tool-icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 1.1rem;
+  position: relative;
+}
+.tool-icon-wrap::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  opacity: 0.15;
+}
+
+.tool-name {
+  font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem;
+  letter-spacing: -0.3px;
+}
+.tool-desc {
+  font-size: 0.83rem; color: var(--text2); line-height: 1.55;
+  flex: 1; margin-bottom: 1.2rem;
+}
+.tool-footer {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.tool-tag {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.4px;
+  padding: 3px 10px; border-radius: 50px;
+}
+.tool-arrow {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--surface2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; color: var(--text3);
+  transition: all var(--trans);
+}
+.tool-card:hover .tool-arrow {
+  background: var(--blue); color: #fff;
+  transform: translateX(3px);
+}
+
+/* color variants */
+.c-blue  .tool-icon-wrap::before { background: #3b82f6; }
+.c-cyan  .tool-icon-wrap::before { background: #06b6d4; }
+.c-green .tool-icon-wrap::before { background: #10b981; }
+.c-amber .tool-icon-wrap::before { background: #f59e0b; }
+.c-rose  .tool-icon-wrap::before { background: #f43f5e; }
+.c-violet.tool-icon-wrap::before { background: #8b5cf6; }
+
+.tag-blue   { background: rgba(59,130,246,0.12);  color: #60a5fa; }
+.tag-cyan   { background: rgba(6,182,212,0.12);   color: #22d3ee; }
+.tag-green  { background: rgba(16,185,129,0.12);  color: #34d399; }
+.tag-amber  { background: rgba(245,158,11,0.12);  color: #fbbf24; }
+.tag-rose   { background: rgba(244,63,94,0.12);   color: #fb7185; }
+.tag-violet { background: rgba(139,92,246,0.12);  color: #a78bfa; }
+
+/* ══════════════════════════════════════
+   MODAL
+══════════════════════════════════════ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(4,7,14,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: none; align-items: center; justify-content: center;
+  padding: clamp(0.5rem,3vw,1.5rem);
+  overflow-y: auto;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-lg);
+  width: 100%; max-width: 820px;
+  position: relative;
+  animation: modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both;
+  overflow: hidden;
+  margin: auto;
+}
+@keyframes modalIn {
+  from { opacity:0; transform: scale(0.93) translateY(24px); }
+  to   { opacity:1; transform: scale(1) translateY(0); }
+}
+.modal-header {
+  padding: 1.75rem 1.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 1rem;
+}
+.modal-header-icon {
+  width: 48px; height: 48px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.modal-header-text { flex: 1; }
+.modal-header-text h2 {
+  font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 3px;
+}
+.modal-header-text p { font-size: 0.85rem; color: var(--text2); }
+.modal-close {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text2); font-size: 1rem; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--trans); cursor: pointer;
+}
+.modal-close:hover { background: var(--surface3); color: var(--text); }
+.modal-body { padding: 1.75rem; max-height: 76vh; overflow-y: auto; }
+
+/* ══════════════════════════════════════
+   TOOL UI COMPONENTS
+══════════════════════════════════════ */
+.upload-zone {
+  border: 2px dashed var(--border2);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem,5vw,3rem) 1.5rem;
+  text-align: center; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: all var(--trans);
+  background: var(--surface2);
+}
+.upload-zone:hover, .upload-zone.drag {
+  border-color: var(--blue);
+  background: rgba(59,130,246,0.04);
+}
+.upload-zone input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+}
+.upload-zone-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+.upload-zone h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+.upload-zone p { font-size: 0.8rem; color: var(--text3); }
+
+.ctrl-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem; margin: 1.2rem 0;
+}
+.ctrl-group { display: flex; flex-direction: column; gap: 6px; }
+.ctrl-label { font-size: 0.75rem; color: var(--text3); font-weight: 600; letter-spacing: 0.3px; }
+.ctrl-input {
+  background: var(--surface2);
+  border: 1px solid var(--border); color: var(--text);
+  border-radius: var(--radius-sm); padding: 9px 12px;
+  font-size: 0.875rem; transition: border-color var(--trans);
+}
+.ctrl-input:focus { outline: none; border-color: var(--blue); }
+.ctrl-input[type="range"] {
+  padding: 4px 0; accent-color: var(--blue);
+  background: transparent; border: none; height: 24px;
+}
+.ctrl-val {
+  font-family: var(--mono); font-size: 0.75rem;
+  color: var(--cyan); background: rgba(6,182,212,0.08);
+  padding: 1px 6px; border-radius: 4px; margin-left: 4px;
+}
+
+.canvas-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  min-height: 200px; margin: 1rem 0;
+  overflow: hidden; position: relative;
+}
+.canvas-box canvas { max-width: 100%; max-height: 380px; border-radius: 8px; }
+.canvas-placeholder {
+  text-align: center; color: var(--text3);
+  pointer-events: none;
+}
+.canvas-placeholder svg { width: 48px; height: 48px; opacity: 0.3; margin-bottom: 0.5rem; }
+.canvas-placeholder p { font-size: 0.85rem; }
+
+.side-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.side-label {
+  font-size: 0.72rem; font-weight: 700; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;
+}
+
+.btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.2rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 20px; border-radius: var(--radius-sm);
+  font-size: 0.87rem; font-weight: 700; border: none;
+  transition: all var(--trans); cursor: pointer;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: linear-gradient(135deg,#3b82f6,#06b6d4); color:#fff; box-shadow: 0 4px 16px rgba(59,130,246,0.3); }
+.btn-primary:hover { box-shadow: 0 8px 24px rgba(59,130,246,0.4); }
+.btn-green { background: linear-gradient(135deg,#10b981,#059669); color:#fff; box-shadow: 0 4px 16px rgba(16,185,129,0.3); }
+.btn-amber { background: linear-gradient(135deg,#f59e0b,#d97706); color:#fff; box-shadow: 0 4px 16px rgba(245,158,11,0.3); }
+.btn-ghost {
+  background: var(--surface2); color: var(--text2);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { border-color: var(--border2); color: var(--text); }
+
+.swatch-grid { display: flex; gap: 8px; flex-wrap: wrap; margin: 0.6rem 0; }
+.swatch {
+  width: 32px; height: 32px; border-radius: 8px; cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--trans);
+}
+.swatch:hover, .swatch.on { transform: scale(1.15); border-color: #fff; box-shadow: 0 0 12px rgba(255,255,255,0.2); }
+
+.info-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(110px,1fr)); gap: .75rem; margin: 1rem 0; }
+.info-card {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 0.9rem; text-align: center;
+}
+.info-card-val { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; }
+.info-card-key { font-size: 0.72rem; color: var(--text3); margin-top: 2px; }
+
+/* ══════════════════════════════════════
+   FEATURE STRIP & FOOTER
+══════════════════════════════════════ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 1rem; margin-top: 2rem;
+}
+.feature-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+  transition: transform var(--trans), border-color var(--trans);
+}
+.feature-card:hover { transform: translateY(-3px); border-color: var(--border2); }
+.feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.feature-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+.feature-desc { font-size: 0.82rem; color: var(--text2); line-height: 1.55; }
+
+.stats-bar {
+  background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 2.5rem; display: flex; justify-content: center; gap: clamp(2rem,6vw,5rem); flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+.stat-item { text-align: center; }
+.stat-val {
+  font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 900; letter-spacing: -1px;
+  background: linear-gradient(135deg,#3b82f6,#06b6d4);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.stat-key { font-size: 0.8rem; color: var(--text3); margin-top: 3px; }
+
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 2rem clamp(1rem,4vw,2.5rem);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-size: 1.1rem; font-weight: 800; background: linear-gradient(135deg,#3b82f6,#06b6d4); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { font-size: 0.82rem; color: var(--text3); transition: color var(--trans); }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 0.8rem; color: var(--text3); }
+
+/* ══════════════════════════════════════
+   TOAST
+══════════════════════════════════════ */
+#toast {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--surface); border: 1px solid rgba(16,185,129,0.4);
+  border-radius: var(--radius-sm); padding: 12px 18px;
+  font-size: 0.87rem; font-weight: 600; color: var(--emerald);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  opacity: 0; transform: translateX(100px);
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  pointer-events: none; max-width: calc(100vw - 3rem);
+}
+#toast.show { opacity: 1; transform: translateX(0); }
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(22px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .nav-search { display: none; }
+  .hamburger { display: flex; }
+  .nav-btn { display: none; }
+  .side-grid { grid-template-columns: 1fr; }
+  .hero h1 { letter-spacing: -2px; }
+  .hero-stats { gap: 1.5rem; }
+  .tools-grid { grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); }
+  .modal { max-height: 95vh; }
+  .modal-body { max-height: 65vh; }
+  .ctrl-row { grid-template-columns: 1fr 1fr; }
+  .btn-row { gap: 0.5rem; }
+  .btn { padding: 9px 14px; font-size: 0.82rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .tools-grid { grid-template-columns: 1fr; }
+  .ctrl-row { grid-template-columns: 1fr; }
+  .hero-cta { flex-direction: column; align-items: center; }
+  .btn-row { flex-direction: column; }
+  .btn { justify-content: center; }
+  .info-row { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="bg-mesh" aria-hidden="true"></div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-logo">Snap<span>Docs</span></div>
+  <div class="nav-search" role="search">
+    <span class="nav-search-icon" aria-hidden="true">🔍</span>
+    <input type="search" placeholder="Search tools..." aria-label="Search tools"
+           oninput="filterTools(this.value)" id="navSearch">
+  </div>
+  <div class="nav-actions">
+    <button class="nav-btn" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">
+      Try Free →
+    </button>
+    <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero" role="banner">
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+
+  <div class="hero-pill" role="status">
+    <span class="hero-pill-dot"></span>
+    12+ Free Tools · No Signup · 100% Private
+  </div>
+
+  <h1>
+    Professional Tools<br>
+    <span class="line2">for Every Document</span>
+  </h1>
+
+  <p class="hero-desc">
+    Passport photos, document scanning, image editing, QR codes, and more —
+    all running locally in your browser. Your files stay on your device.
+  </p>
+
+  <div class="hero-cta">
+    <button class="btn-hero-primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">
+      ✦ Explore All Tools
+    </button>
+    <a class="btn-hero-ghost" href="#features">How it works ↓</a>
+  </div>
+
+  <div class="hero-stats" role="list">
+    <div class="hero-stat" role="listitem"><div class="hero-stat-num">12+</div><div class="hero-stat-label">Free Tools</div></div>
+    <div class="hero-stat" role="listitem"><div class="hero-stat-num">0ms</div><div class="hero-stat-label">Server Upload</div></div>
+    <div class="hero-stat" role="listitem"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Private</div></div>
+    <div class="hero-stat" role="listitem"><div class="hero-stat-num">Free</div><div class="hero-stat-label">Always</div></div>
+  </div>
+</header>
+
+<!-- ═══ STATS BAR ═══ -->
+<div class="stats-bar" aria-label="Statistics">
+  <div class="stat-item"><div class="stat-val">12+</div><div class="stat-key">Powerful Tools</div></div>
+  <div class="stat-item"><div class="stat-val">100%</div><div class="stat-key">Browser-Based</div></div>
+  <div class="stat-item"><div class="stat-val">0KB</div><div class="stat-key">Data Uploaded</div></div>
+  <div class="stat-item"><div class="stat-val">∞</div><div class="stat-key">Uses Per Day</div></div>
+</div>
+
+<!-- ═══ TOOLS SECTION ═══ -->
+<main>
+<section class="section" id="tools" aria-labelledby="tools-title">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">All Tools</div>
+    <h2 class="section-title" id="tools-title">Everything you need,<br>right here</h2>
+    <p class="section-sub">Click any tool to launch it instantly. No installation, no account.</p>
+  </div>
+
+  <div class="tools-search-wrap reveal">
+    <div class="tools-search">
+      <span class="tools-search-icon">🔍</span>
+      <input type="search" id="toolSearch" placeholder="Search tools..." oninput="filterTools(this.value)" aria-label="Search tools">
+    </div>
+    <div class="filter-chips" role="group" aria-label="Filter by category">
+      <button class="filter-chip active" onclick="setFilter('all',this)">All</button>
+      <button class="filter-chip" onclick="setFilter('photo',this)">📷 Photo</button>
+      <button class="filter-chip" onclick="setFilter('document',this)">📄 Document</button>
+      <button class="filter-chip" onclick="setFilter('utility',this)">⚙️ Utility</button>
+    </div>
+  </div>
+
+  <div class="tools-grid" id="toolsGrid" role="list">
+    <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section class="section" id="features" aria-labelledby="features-title">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Why SnapDocs</div>
+    <h2 class="section-title" id="features-title">Built for privacy<br>& performance</h2>
+  </div>
+  <div class="features-grid reveal">
+    <article class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3 class="feature-title">Zero Data Sent</h3>
+      <p class="feature-desc">Every tool runs entirely in your browser using Canvas & Web APIs. Your photos and documents never touch a server.</p>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3 class="feature-title">Instant Processing</h3>
+      <p class="feature-desc">No upload queues, no waiting. Results are processed in milliseconds on your own device's hardware.</p>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3 class="feature-title">Global Standards</h3>
+      <p class="feature-desc">Supports US, UK, India, EU, China, and 20+ other passport and visa photo standards out of the box.</p>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3 class="feature-title">Works Everywhere</h3>
+      <p class="feature-desc">Fully responsive design — works on mobile, tablet, and desktop without installing any app.</p>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon">💸</div>
+      <h3 class="feature-title">Always Free</h3>
+      <p class="feature-desc">No subscriptions, no watermarks, no hidden limits. Every tool is free to use unlimited times.</p>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon">♿</div>
+      <h3 class="feature-title">Accessible</h3>
+      <p class="feature-desc">Built with ARIA labels, keyboard navigation, and screen reader support for all users.</p>
+    </article>
+  </div>
+</section>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer role="contentinfo">
+  <div class="footer-logo">SnapDocs</div>
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="#tools">Tools</a>
+    <a href="#features">Features</a>
+    <a href="#" onclick="return false">Privacy Policy</a>
+    <a href="#" onclick="return false">Terms</a>
+  </nav>
+  <p class="footer-copy">© 2024 SnapDocs · All processing runs locally in your browser</p>
+</footer>
+
+<!-- ═══ MODAL ═══ -->
+<div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"
+     onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header" id="modalHeader"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div id="toast" role="status" aria-live="polite">✓ <span id="toastMsg"></span></div>
+
+<!-- ═══════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════ -->
+<script>
+/* ══════════════ TOOL REGISTRY ══════════════ */
+const TOOLS = [
+  {
+    id:'passport', name:'Passport Photo Maker', cat:'photo',
+    icon:'📷', color:'blue', tag:'Photo', tagClass:'tag-blue',
+    desc:'Resize & format photos to official passport, visa & ID standards with custom backgrounds and grid layouts.',
+    keywords:['passport','visa','id','photo','size','resize','2x2','35x45']
+  },
+  {
+    id:'scanner', name:'Document Scanner', cat:'document',
+    icon:'🔍', color:'violet', tag:'Scanner', tagClass:'tag-violet',
+    desc:'Enhance & clean scanned documents. Convert photos of documents into crisp black & white or color scans.',
+    keywords:['scan','document','receipt','form','letter','black white','enhance','sharpen']
+  },
+  {
+    id:'bgremove', name:'Background Remover', cat:'photo',
+    icon:'✂️', color:'rose', tag:'Editor', tagClass:'tag-rose',
+    desc:'Remove or replace image backgrounds. Choose solid colors or transparency for passport compliance.',
+    keywords:['background','remove','transparent','replace','erase','cutout']
+  },
+  {
+    id:'compress', name:'Image Compressor', cat:'utility',
+    icon:'🗜️', color:'green', tag:'Optimizer', tagClass:'tag-green',
+    desc:'Reduce image file size without visible quality loss. See live size savings before downloading.',
+    keywords:['compress','reduce','size','file','optimize','smaller','kb','mb']
+  },
+  {
+    id:'convert', name:'Image Converter', cat:'utility',
+    icon:'🔄', color:'cyan', tag:'Converter', tagClass:'tag-cyan',
+    desc:'Convert between JPG, PNG, and WebP formats. Supports batch conversion of multiple images.',
+    keywords:['convert','jpg','jpeg','png','webp','format','batch']
+  },
+  {
+    id:'enhance', name:'Photo Enhancer & Crop', cat:'photo',
+    icon:'✨', color:'amber', tag:'Enhancer', tagClass:'tag-amber',
+    desc:'Adjust brightness, contrast, saturation, sharpness. Apply filters and crop to exact ratios.',
+    keywords:['enhance','crop','brightness','contrast','saturation','filter','sepia','vivid']
+  },
+  {
+    id:'idcard', name:'ID Card Generator', cat:'document',
+    icon:'🪪', color:'blue', tag:'Generator', tagClass:'tag-blue',
+    desc:'Create professional ID cards with photo, name, role, department and custom theme colors.',
+    keywords:['id','card','identity','badge','employee','generate','design']
+  },
+  {
+    id:'watermark', name:'Watermark Tool', cat:'photo',
+    icon:'🔏', color:'violet', tag:'Protection', tagClass:'tag-violet',
+    desc:'Add text or logo watermarks to protect your images. Customize opacity, position and size.',
+    keywords:['watermark','protect','copyright','text','logo','overlay']
+  },
+  {
+    id:'qrcode', name:'QR Code Generator', cat:'utility',
+    icon:'◼', color:'green', tag:'Generator', tagClass:'tag-green',
+    desc:'Generate QR codes from any URL, text, email, or phone number. Customize colors and download instantly.',
+    keywords:['qr','code','generate','url','link','barcode','scan']
+  },
+  {
+    id:'colorpick', name:'Color Picker & Palettes', cat:'utility',
+    icon:'🎨', color:'rose', tag:'Design', tagClass:'tag-rose',
+    desc:'Extract colors from any image, generate palettes, and copy HEX/RGB/HSL values with one click.',
+    keywords:['color','picker','palette','hex','rgb','hsl','extract','eyedropper']
+  },
+  {
+    id:'resize', name:'Image Resizer', cat:'photo',
+    icon:'⤡', color:'cyan', tag:'Resizer', tagClass:'tag-cyan',
+    desc:'Resize images to exact pixel dimensions or percentages. Lock aspect ratio, bulk resize support.',
+    keywords:['resize','dimensions','width','height','pixels','scale','aspect ratio']
+  },
+  {
+    id:'metadata', name:'Image Metadata Viewer', cat:'utility',
+    icon:'🔎', color:'amber', tag:'Inspector', tagClass:'tag-amber',
+    desc:'View and strip EXIF metadata from photos. See camera model, GPS location, date taken, and more.',
+    keywords:['exif','metadata','data','info','gps','location','strip','remove','privacy']
+  },
+];
+
+let currentFilter = 'all';
+let currentSearch = '';
+
+/* ══════════════ RENDER CARDS ══════════════ */
+function renderCards() {
+  const grid = document.getElementById('toolsGrid');
+  const q = currentSearch.toLowerCase();
+  const filtered = TOOLS.filter(t => {
+    const catOk = currentFilter === 'all' || t.cat === currentFilter;
+    const searchOk = !q || t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.keywords.some(k=>k.includes(q));
+    return catOk && searchOk;
+  });
+  grid.innerHTML = filtered.length ? filtered.map(t=>`
+    <article class="tool-card" onclick="openTool('${t.id}')" role="listitem"
+             tabindex="0" aria-label="Open ${t.name}"
+             onkeydown="if(event.key==='Enter')openTool('${t.id}')">
+      <div class="tool-icon-wrap c-${t.color}"><span>${t.icon}</span></div>
+      <h3 class="tool-name">${t.name}</h3>
+      <p class="tool-desc">${t.desc}</p>
+      <div class="tool-footer">
+        <span class="tool-tag ${t.tagClass}">${t.tag}</span>
+        <span class="tool-arrow" aria-hidden="true">→</span>
+      </div>
+    </article>
+  `).join('') : `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text3)">
+    <p style="font-size:2rem;margin-bottom:.5rem">🔍</p>
+    <p>No tools match "<strong style="color:var(--text2)">${q}</strong>"</p>
+  </div>`;
+}
+
+function filterTools(q) {
+  currentSearch = q;
+  document.getElementById('navSearch').value = q;
+  document.getElementById('toolSearch').value = q;
+  renderCards();
+}
+function setFilter(cat, el) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  renderCards();
+}
+
+/* ══════════════ TOOL BODY BUILDERS ══════════════ */
+const toolUI = {
+  passport: () => `
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem">
+      ${['US 2×2in','UK 35×45mm','India 35×45mm','Schengen','China 33×48mm'].map(l=>`<span style="font-size:.75rem;background:var(--surface2);border:1px solid var(--border);padding:3px 10px;border-radius:50px;color:var(--text2)">${l}</span>`).join('')}
+    </div>
+    <div class="upload-zone" id="ppZone" ondragover="dOver(event,'ppZone')" ondragleave="dLeave('ppZone')" ondrop="dDrop(event,'ppZone',loadPassport)">
+      <input type="file" accept="image/*" onchange="loadPassport(this.files[0])">
+      <div class="upload-zone-icon">🖼️</div>
+      <h4>Drop your photo here</h4>
+      <p>JPG, PNG, WebP · Click or drag & drop</p>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl-group"><label class="ctrl-label">Country Standard</label>
+        <select class="ctrl-input" id="ppStd" onchange="renderPP()">
+          <option value="us">🇺🇸 US Passport (2×2 in)</option>
+          <option value="uk">🇬🇧 UK Passport (35×45 mm)</option>
+          <option value="in" selected>🇮🇳 India Passport (35×45 mm)</option>
+          <option value="eu">🇪🇺 Schengen Visa (35×45 mm)</option>
+          <option value="cn">🇨🇳 China Visa (33×48 mm)</option>
+          <option value="custom">Custom Size</option>
+        </select>
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Background</label>
+        <select class="ctrl-input" id="ppBg" onchange="renderPP()">
+          <option value="#ffffff">White</option>
+          <option value="#c8d8f0">Light Blue</option>
+          <option value="#f5f5f5">Off-White</option>
+          <option value="#e0e0e0">Light Grey</option>
+          <option value="keep">Keep Original</option>
+        </select>
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Photo Layout</label>
+        <select class="ctrl-input" id="ppLayout" onchange="renderPP()">
+          <option value="1">Single Photo</option>
+          <option value="4">4-up (2×2 grid)</option>
+          <option value="6">6-up (2×3 grid)</option>
+        </select>
+      </div>
+    </div>
+    <div class="canvas-box"><canvas id="ppCanvas"></canvas>
+      <div class="canvas-placeholder" id="ppPlaceholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+        <p>Upload a photo to preview</p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="dlCanvas('ppCanvas','passport_photo.jpg')">⬇ Download JPG</button>
+      <button class="btn btn-ghost" onclick="triggerFileInput('ppZone')">🔄 Change Photo</button>
+    </div>`,
+
+  scanner: () => `
+    <div class="upload-zone" id="scZone" ondragover="dOver(event,'scZone')" ondragleave="dLeave('scZone')" ondrop="dDrop(event,'scZone',loadScanner)">
+      <input type="file" accept="image/*" onchange="loadScanner(this.files[0])">
+      <div class="upload-zone-icon">📄</div>
+      <h4>Upload document photo</h4>
+      <p>Works with receipts, forms, letters, contracts</p>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl-group"><label class="ctrl-label">Scan Mode</label>
+        <select class="ctrl-input" id="scMode" onchange="applyScanner()">
+          <option value="bw">Black & White</option>
+          <option value="gray">Grayscale</option>
+          <option value="color">Color Enhanced</option>
+          <option value="original">Original</option>
+        </select>
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Contrast <span class="ctrl-val" id="scCV">50</span></label>
+        <input type="range" class="ctrl-input" id="scContrast" min="0" max="100" value="50" oninput="document.getElementById('scCV').textContent=this.value;applyScanner()">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Brightness <span class="ctrl-val" id="scBV">50</span></label>
+        <input type="range" class="ctrl-input" id="scBright" min="0" max="100" value="50" oninput="document.getElementById('scBV').textContent=this.value;applyScanner()">
+      </div>
+    </div>
+    <div class="side-grid">
+      <div><div class="side-label">Original</div><div class="canvas-box" style="min-height:150px"><canvas id="scOrigC"></canvas></div></div>
+      <div><div class="side-label">Scanned</div><div class="canvas-box" style="min-height:150px"><canvas id="scC"></canvas></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="dlCanvas('scC','scanned_doc.jpg')">⬇ Download</button>
+      <button class="btn btn-ghost" onclick="triggerFileInput('scZone')">🔄 New Image</button>
+    </div>`,
+
+  bgremove: () => `
+    <div class="upload-zone" id="bgZone" ondragover="dOver(event,'bgZone')" ondragleave="dLeave('bgZone')" ondrop="dDrop(event,'bgZone',loadBgRm)">
+      <input type="file" accept="image/*" onchange="loadBgRm(this.files[0])">
+      <div class="upload-zone-icon">🎨</div>
+      <h4>Upload your image</h4>
+      <p>Best with clear subject-background contrast</p>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl-group"><label class="ctrl-label">Sensitivity <span class="ctrl-val" id="bgTV">40</span></label>
+        <input type="range" class="ctrl-input" id="bgTol" min="5" max="130" value="40" oninput="document.getElementById('bgTV').textContent=this.value;applyBgRm()">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Smoothing <span class="ctrl-val" id="bgFV">5</span></label>
+        <input type="range" class="ctrl-input" id="bgFeat" min="0" max="25" value="5" oninput="document.getElementById('bgFV').textContent=this.value;applyBgRm()">
+      </div>
+    </div>
+    <p style="font-size:.78rem;color:var(--text3);font-weight:600;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:1px">Replace Background</p>
+    <div class="swatch-grid" id="bgSwatches">
+      <div class="swatch on" style="background:#fff;border:1px solid #ccc" onclick="selSwatch(this,'#ffffff')" title="White"></div>
+      <div class="swatch" style="background:#c8d8f0" onclick="selSwatch(this,'#c8d8f0')" title="Light Blue"></div>
+      <div class="swatch" style="background:#d4edda" onclick="selSwatch(this,'#d4edda')" title="Light Green"></div>
+      <div class="swatch" style="background:#fff3cd" onclick="selSwatch(this,'#fff3cd')" title="Light Yellow"></div>
+      <div class="swatch" style="background:#fce4ec" onclick="selSwatch(this,'#fce4ec')" title="Pink"></div>
+      <div class="swatch" style="background:#1a1a2e" onclick="selSwatch(this,'#1a1a2e')" title="Dark Navy"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#667eea,#764ba2)" onclick="selSwatch(this,'gradient')" title="Gradient"></div>
+      <div class="swatch" style="background:repeating-conic-gradient(#bbb 0 25%,#fff 0 50%) 0 0/12px 12px" onclick="selSwatch(this,'transparent')" title="Transparent"></div>
+    </div>
+    <div class="side-grid" style="margin-top:1rem">
+      <div><div class="side-label">Original</div><div class="canvas-box" style="min-height:150px"><canvas id="bgOrigC"></canvas></div></div>
+      <div><div class="side-label">Result</div><div class="canvas-box" style="min-height:150px"><canvas id="bgC"></canvas></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="dlCanvas('bgC','bg_removed.png',true)">⬇ Download PNG</button>
+    </div>`,
+
+  compress: () => `
+    <div class="upload-zone" id="cmpZone" ondragover="dOver(event,'cmpZone')" ondragleave="dLeave('cmpZone')" ondrop="dDrop(event,'cmpZone',loadCompress)">
+      <input type="file" accept="image/*" onchange="loadCompress(this.files[0])">
+      <div class="upload-zone-icon">🗜️</div>
+      <h4>Upload image to compress</h4>
+      <p>JPG, PNG, WebP supported</p>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl-group"><label class="ctrl-label">Quality <span class="ctrl-val" id="cqV">75</span>%</label>
+        <input type="range" class="ctrl-input" id="cmpQ" min="10" max="99" value="75" oninput="document.getElementById('cqV').textContent=this.value;updateCompress()">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Max Width (px)</label>
+        <input type="number" class="ctrl-input" id="cmpW" value="1920" min="100" max="8000" onchange="updateCompress()">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Output Format</label>
+        <select class="ctrl-input" id="cmpFmt" onchange="updateCompress()">
+          <option value="jpeg">JPG (Smallest)</option>
+          <option value="png">PNG (Lossless)</option>
+          <option value="webp">WebP (Best)</option>
+        </select>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-card"><div class="info-card-val" id="cmpOrigSz">—</div><div class="info-card-key">Original Size</div></div>
+      <div class="info-card"><div class="info-card-val" style="color:var(--emerald)" id="cmpNewSz">—</div><div class="info-card-key">New Size</div></div>
+      <div class="info-card"><div class="info-card-val" style="color:var(--cyan)" id="cmpSave">—</div><div class="info-card-key">Savings</div></div>
+      <div class="info-card"><div class="info-card-val" id="cmpDim">—</div><div class="info-card-key">Dimensions</div></div>
+    </div>
+    <div class="canvas-box"><canvas id="cmpC"></canvas></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="doCompress()">⬇ Download Compressed</button>
+    </div>`,
+
+  convert: () => `
+    <div class="upload-zone" id="cvtZone">
+      <input type="file" accept="image/*" multiple onchange="loadConvert(this.files)">
+      <div class="upload-zone-icon">🔄</div>
+      <h4>Upload images (supports multiple)</h4>
+      <p>JPG, PNG, WebP, GIF, BMP · Batch convert</p>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl-group"><label class="ctrl-label">Convert To</label>
+        <select class="ctrl-input" id="cvtTo">
+          <option value="jpeg">JPG</option>
+          <option value="png">PNG</option>
+          <option value="webp">WebP</option>
+        </select>
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Quality <span class="ctrl-val" id="cvqV">90</span>%</label>
+        <input type="range" class="ctrl-input" id="cvtQ" min="30" max="99" value="90" oninput="document.getElementById('cvqV').textContent=this.value">
+      </div>
+    </div>
+    <div id="cvtList" style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="doConvert()">🔄 Convert & Download All</button>
+    </div>`,
+
+  enhance: () => `
+    <div class="upload-zone" id="enhZone" ondragover="dOver(event,'enhZone')" ondragleave="dLeave('enhZone')" ondrop="dDrop(event,'enhZone',loadEnhance)">
+      <input type="file" accept="image/*" onchange="loadEnhance(this.files[0])">
+      <div class="upload-zone-icon">✨</div>
+      <h4>Upload your photo</h4>
+      <p>Any image format supported</p>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl-group"><label class="ctrl-label">Brightness <span class="ctrl-val" id="eBrV">0</span></label>
+        <input type="range" class="ctrl-input" id="eBr" min="-100" max="100" value="0" oninput="document.getElementById('eBrV').textContent=this.value;applyEnhance()">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Contrast <span class="ctrl-val" id="eCtV">0</span></label>
+        <input type="range" class="ctrl-input" id="eCt" min="-100" max="100" value="0" oninput="document.getElementById('eCtV').textContent=this.value;applyEnhance()">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Saturation <span class="ctrl-val" id="eSatV">0</span></label>
+        <input type="range" class="ctrl-input" id="eSat" min="-100" max="100" value="0" oninput="document.getElementById('eSatV').textContent=this.value;applyEnhance()">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Sharpness <span class="ctrl-val" id="eShpV">0</span></label>
+        <input type="range" class="ctrl-input" id="eShp" min="0" max="100" value="0" oninput="document.getElementById('eShpV').textContent=this.value;applyEnhance()">
+      </div>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl-group"><label class="ctrl-label">Filter</label>
+        <select class="ctrl-input" id="eFilter" onchange="applyEnhance()">
+          <option value="none">None</option>
+          <option value="vivid">Vivid</option>
+          <option value="cool">Cool</option>
+          <option value="warm">Warm</option>
+          <option value="grayscale">Grayscale</option>
+          <option value="sepia">Sepia</option>
+          <option value="invert">Invert</option>
+        </select>
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Crop Ratio</label>
+        <select class="ctrl-input" id="eRatio" onchange="applyEnhance()">
+          <option value="none">Free</option>
+          <option value="1:1">Square 1:1</option>
+          <option value="4:3">4:3</option>
+          <option value="16:9">16:9</option>
+          <option value="3:4">Portrait 3:4</option>
+          <option value="9:16">9:16</option>
+        </select>
+      </div>
+    </div>
+    <div class="canvas-box"><canvas id="enhC"></canvas>
+      <div class="canvas-placeholder" id="enhPH">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+        <p>Upload a photo to start</p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="dlCanvas('enhC','enhanced.jpg')">⬇ Download</button>
+      <button class="btn btn-ghost" onclick="resetEnhance()">↺ Reset All</button>
+    </div>`,
+
+  idcard: () => `
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:.75rem">
+        ${[
+          ['idName','Full Name','Alex Morgan'],
+          ['idRole','Role / Position','Product Designer'],
+          ['idOrg','Organization','GlobalTech Solutions'],
+          ['idDept','Department','Product & Design'],
+          ['idNum','ID Number','EMP-2025-47821'],
+          ['idExp','Valid Until','31 Dec 2026'],
+          ['idBlood','Blood Group','O+'],
+          ['idPhone','Phone','+1 (555) 014-2893']
+        ].map(([id,label,ph])=>`
+          <div class="ctrl-group">
+            <label class="ctrl-label">${label}</label>
+            <input type="text" class="ctrl-input" id="${id}" value="${ph}" oninput="renderID()" style="width:100%">
+          </div>`).join('')}
+        <div class="ctrl-group"><label class="ctrl-label">Theme</label>
+          <select class="ctrl-input" id="idTheme" onchange="renderID()">
+            <option value="blue">Navy Blue</option><option value="dark">Midnight</option>
+            <option value="green">Forest Green</option><option value="red">Deep Red</option>
+            <option value="gold">Royal Gold</option>
+          </select>
+        </div>
+        <div class="ctrl-group"><label class="ctrl-label">Upload Photo</label>
+          <input type="file" accept="image/*" onchange="loadIDPhoto(this.files[0])" class="ctrl-input" style="padding:6px">
+        </div>
+      </div>
+      <div>
+        <div class="side-label">Preview</div>
+        <canvas id="idC" style="width:100%;border-radius:12px;box-shadow:var(--shadow-lg)"></canvas>
+      </div>
+    </div>
+    <div class="btn-row" style="margin-top:1rem">
+      <button class="btn btn-primary" onclick="dlCanvas('idC','id_card.png',true)">⬇ Download ID Card</button>
+    </div>`,
+
+  watermark: () => `
+    <div class="upload-zone" id="wmZone" ondragover="dOver(event,'wmZone')" ondragleave="dLeave('wmZone')" ondrop="dDrop(event,'wmZone',loadWM)">
+      <input type="file" accept="image/*" onchange="loadWM(this.files[0])">
+      <div class="upload-zone-icon">🔏</div>
+      <h4>Upload image</h4>
+      <p>JPG, PNG, WebP supported</p>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl-group" style="grid-column:span 2"><label class="ctrl-label">Watermark Text</label>
+        <input type="text" class="ctrl-input" id="wmTxt" value="© Your Brand 2025" oninput="applyWM()" style="width:100%">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Position</label>
+        <select class="ctrl-input" id="wmPos" onchange="applyWM()">
+          <option value="center">Center</option><option value="br">Bottom Right</option>
+          <option value="bl">Bottom Left</option><option value="tr">Top Right</option>
+          <option value="tl">Top Left</option><option value="tile">Tiled</option>
+        </select>
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Opacity <span class="ctrl-val" id="wmOpV">40</span>%</label>
+        <input type="range" class="ctrl-input" id="wmOp" min="5" max="100" value="40" oninput="document.getElementById('wmOpV').textContent=this.value;applyWM()">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Font Size <span class="ctrl-val" id="wmSzV">32</span></label>
+        <input type="range" class="ctrl-input" id="wmSz" min="12" max="100" value="32" oninput="document.getElementById('wmSzV').textContent=this.value;applyWM()">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Color</label>
+        <select class="ctrl-input" id="wmCol" onchange="applyWM()">
+          <option value="white">White</option><option value="black">Black</option>
+          <option value="#3b82f6">Blue</option><option value="#10b981">Green</option>
+          <option value="#f59e0b">Gold</option><option value="#f43f5e">Red</option>
+        </select>
+      </div>
+    </div>
+    <div class="canvas-box"><canvas id="wmC"></canvas></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="dlCanvas('wmC','watermarked.jpg')">⬇ Download</button>
+    </div>`,
+
+  qrcode: () => `
+    <div class="ctrl-row">
+      <div class="ctrl-group" style="grid-column:span 2"><label class="ctrl-label">Content (URL, Text, Phone, Email)</label>
+        <input type="text" class="ctrl-input" id="qrText" value="https://example.com" oninput="renderQR()" style="width:100%" placeholder="Enter URL or text...">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Foreground Color</label>
+        <input type="color" class="ctrl-input" id="qrFg" value="#000000" oninput="renderQR()" style="height:42px;padding:4px">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Background Color</label>
+        <input type="color" class="ctrl-input" id="qrBg" value="#ffffff" oninput="renderQR()" style="height:42px;padding:4px">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Size (px)</label>
+        <select class="ctrl-input" id="qrSz" onchange="renderQR()">
+          <option value="256">256×256</option><option value="512" selected>512×512</option><option value="1024">1024×1024</option>
+        </select>
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Error Correction</label>
+        <select class="ctrl-input" id="qrEc" onchange="renderQR()">
+          <option value="L">Low (7%)</option><option value="M" selected>Medium (15%)</option>
+          <option value="Q">Quartile (25%)</option><option value="H">High (30%)</option>
+        </select>
+      </div>
+    </div>
+    <div class="canvas-box" style="padding:2rem"><canvas id="qrC" style="max-width:280px;border-radius:12px"></canvas></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="dlCanvas('qrC','qr_code.png',true)">⬇ Download PNG</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('qrText').value='';renderQR()">🗑 Clear</button>
+    </div>`,
+
+  colorpick: () => `
+    <div class="upload-zone" id="cpZone" ondragover="dOver(event,'cpZone')" ondragleave="dLeave('cpZone')" ondrop="dDrop(event,'cpZone',loadColorPick)">
+      <input type="file" accept="image/*" onchange="loadColorPick(this.files[0])">
+      <div class="upload-zone-icon">🎨</div>
+      <h4>Upload image to extract colors</h4>
+      <p>Click anywhere on the image to pick a color</p>
+    </div>
+    <div class="canvas-box" style="cursor:crosshair;padding:0;overflow:hidden">
+      <canvas id="cpC" onclick="pickColor(event)" style="cursor:crosshair;max-width:100%"></canvas>
+    </div>
+    <div id="cpPalette" style="display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0;min-height:52px;align-items:center">
+      <p style="color:var(--text3);font-size:.85rem">Extracted colors will appear here</p>
+    </div>
+    <div id="cpPicked" style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;display:none">
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+        <div id="cpSwatch" style="width:56px;height:56px;border-radius:var(--radius-sm);flex-shrink:0"></div>
+        <div style="display:grid;grid-template-columns:repeat(3,auto);gap:.5rem .75rem;align-items:center">
+          <span style="font-size:.72rem;color:var(--text3)">HEX</span>
+          <span style="font-size:.72rem;color:var(--text3)">RGB</span>
+          <span style="font-size:.72rem;color:var(--text3)">HSL</span>
+          <span id="cpHex" class="ctrl-val" style="cursor:pointer" onclick="copyTxt(this.textContent)">—</span>
+          <span id="cpRgb" class="ctrl-val" style="cursor:pointer" onclick="copyTxt(this.textContent)">—</span>
+          <span id="cpHsl" class="ctrl-val" style="cursor:pointer" onclick="copyTxt(this.textContent)">—</span>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="extractPalette()">🎨 Extract Full Palette</button>
+    </div>`,
+
+  resize: () => `
+    <div class="upload-zone" id="rzZone" ondragover="dOver(event,'rzZone')" ondragleave="dLeave('rzZone')" ondrop="dDrop(event,'rzZone',loadResize)">
+      <input type="file" accept="image/*" onchange="loadResize(this.files[0])">
+      <div class="upload-zone-icon">⤡</div>
+      <h4>Upload image to resize</h4>
+      <p>Original dimensions detected automatically</p>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl-group"><label class="ctrl-label">Width (px)</label>
+        <input type="number" class="ctrl-input" id="rzW" value="1920" min="1" max="10000" onchange="syncRz('w')">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Height (px)</label>
+        <input type="number" class="ctrl-input" id="rzH" value="1080" min="1" max="10000" onchange="syncRz('h')">
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Lock Ratio</label>
+        <select class="ctrl-input" id="rzLock">
+          <option value="yes">Locked 🔒</option><option value="no">Unlocked 🔓</option>
+        </select>
+      </div>
+      <div class="ctrl-group"><label class="ctrl-label">Preset</label>
+        <select class="ctrl-input" id="rzPreset" onchange="applyRzPreset()">
+          <option value="">Custom</option>
+          <option value="1920x1080">Full HD (1920×1080)</option>
+          <option value="1280x720">HD (1280×720)</option>
+          <option value="800x600">SVGA (800×600)</option>
+          <option value="512x512">Square 512</option>
+          <option value="1080x1080">Instagram (1080×1080)</option>
+          <option value="1200x628">Facebook OG (1200×628)</option>
+        </select>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-card"><div class="info-card-val" id="rzOrigDim">—</div><div class="info-card-key">Original Size</div></div>
+      <div class="info-card"><div class="info-card-val" style="color:var(--cyan)" id="rzNewDim">—</div><div class="info-card-key">New Size</div></div>
+    </div>
+    <div class="canvas-box"><canvas id="rzC"></canvas></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="doResize()">⬇ Download Resized</button>
+    </div>`,
+
+  metadata: () => `
+    <div class="upload-zone" id="mdZone" ondragover="dOver(event,'mdZone')" ondragleave="dLeave('mdZone')" ondrop="dDrop(event,'mdZone',loadMeta)">
+      <input type="file" accept="image/*" onchange="loadMeta(this.files[0])">
+      <div class="upload-zone-icon">🔎</div>
+      <h4>Upload image to inspect</h4>
+      <p>JPEG, PNG, WebP, TIFF supported</p>
+    </div>
+    <div id="mdResults" style="margin:1rem 0;display:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+        <div style="padding:1rem 1.25rem;border-bottom:1px solid var(--border);font-size:.8rem;font-weight:700;color:var(--text3);letter-spacing:1px;text-transform:uppercase">Image Information</div>
+        <div id="mdTable" style="padding:.5rem 0"></div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-green" onclick="stripMeta()">🛡 Download Privacy Copy (Stripped)</button>
+      <button class="btn btn-ghost" onclick="copyMeta()">📋 Copy All Metadata</button>
+    </div>`,
+};
+
+/* ══════════════ TOOL STATE ══════════════ */
+const S = {
+  ppImg:null, scImg:null, bgImg:null, bgColor:'#ffffff',
+  cmpImg:null, cmpOrig:0, cvtFiles:[],
+  enhImg:null, idPhoto:null, wmImg:null,
+  cpImg:null, cpColors:[], rzImg:null, rzRatio:1,
+  mdImg:null, mdFile:null
+};
+
+/* ══════════════ MODAL OPEN/CLOSE ══════════════ */
+function openTool(id) {
+  const t = TOOLS.find(x=>x.id===id);
+  const hdr = document.getElementById('modalHeader');
+  const body = document.getElementById('modalBody');
+  hdr.innerHTML = `
+    <div class="modal-header-icon" style="background:var(--surface3)">${t.icon}</div>
+    <div class="modal-header-text">
+      <h2 id="modalTitle">${t.name}</h2>
+      <p>${t.desc}</p>
+    </div>
+    <button class="modal-close" onclick="closeTool()" aria-label="Close">✕</button>`;
+  body.innerHTML = toolUI[id]?.() || '<p style="color:var(--text3)">Tool coming soon…</p>';
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (id === 'idcard') setTimeout(renderID, 60);
+  if (id === 'qrcode') setTimeout(renderQR, 60);
+}
+function closeTool() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) { if(e.target.id==='modalOverlay') closeTool(); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeTool(); });
+
+/* ══════════════ DRAG & DROP ══════════════ */
+function dOver(e,id){e.preventDefault();document.getElementById(id)?.classList.add('drag');}
+function dLeave(id){document.getElementById(id)?.classList.remove('drag');}
+function dDrop(e,id,cb){e.preventDefault();dLeave(id);if(e.dataTransfer.files[0])cb(e.dataTransfer.files[0]);}
+function triggerFileInput(zoneId){document.querySelector(`#${zoneId} input[type=file]`)?.click();}
+
+/* ══════════════ IMAGE LOADER ══════════════ */
+function loadImg(file,cb){
+  const r=new FileReader();
+  r.onload=e=>{const img=new Image();img.onload=()=>cb(img);img.src=e.target.result;};
+  r.readAsDataURL(file);
+}
+
+/* ══════════════ CANVAS UTILS ══════════════ */
+function fitCanvas(canvasId,img,maxW=440,maxH=320,bgColor){
+  const c=document.getElementById(canvasId); if(!c)return;
+  const s=Math.min(1,maxW/img.width,maxH/img.height);
+  c.width=Math.round(img.width*s); c.height=Math.round(img.height*s);
+  const ctx=c.getContext('2d');
+  if(bgColor&&bgColor!=='transparent'){ctx.fillStyle=bgColor;ctx.fillRect(0,0,c.width,c.height);}
+  ctx.drawImage(img,0,0,c.width,c.height);
+  return ctx;
+}
+function showPH(id,show){
+  const el=document.getElementById(id);
+  if(el)el.style.display=show?'block':'none';
+}
+
+/* ══════════════ PASSPORT ══════════════ */
+const PP_SIZES={us:[600,600],uk:[413,531],in:[413,531],eu:[413,531],cn:[390,567],custom:[400,500]};
+function loadPassport(file){loadImg(file,img=>{S.ppImg=img;showPH('ppPlaceholder',false);renderPP();});}
+function renderPP(){
+  if(!S.ppImg)return;
+  const std=document.getElementById('ppStd')?.value||'in';
+  const bg=document.getElementById('ppBg')?.value||'#ffffff';
+  const layout=parseInt(document.getElementById('ppLayout')?.value||'1');
+  const [pw,ph]=PP_SIZES[std]||[413,531];
+  const cols=layout>=4?2:1, rows=layout===6?3:layout===4?2:1;
+  const gap=16;
+  const c=document.getElementById('ppCanvas'); if(!c)return;
+  c.width=pw*cols+gap*(cols-1); c.height=ph*rows+gap*(rows-1);
+  const ctx=c.getContext('2d');
+  ctx.fillStyle='#e0e0e0'; ctx.fillRect(0,0,c.width,c.height);
+  for(let r=0;r<rows;r++) for(let col=0;col<cols;col++){
+    const ox=col*(pw+gap), oy=r*(ph+gap);
+    if(bg!=='keep'){ctx.fillStyle=bg;ctx.fillRect(ox,oy,pw,ph);}
+    const sc=Math.min(pw/S.ppImg.width,ph/S.ppImg.height);
+    const sw=S.ppImg.width*sc,sh=S.ppImg.height*sc;
+    ctx.drawImage(S.ppImg,ox+(pw-sw)/2,oy+(ph-sh)/2,sw,sh);
+    // border
+    ctx.strokeStyle='rgba(0,0,0,0.15)';ctx.lineWidth=1;
+    ctx.strokeRect(ox,oy,pw,ph);
+  }
+}
+
+/* ══════════════ SCANNER ══════════════ */
+function loadScanner(file){loadImg(file,img=>{S.scImg=img;fitCanvas('scOrigC',img,380,280);applyScanner();});}
+function applyScanner(){
+  if(!S.scImg)return;
+  const mode=document.getElementById('scMode')?.value||'bw';
+  const contrast=((document.getElementById('scContrast')?.value||50)-50)*1.5/50;
+  const bright=((document.getElementById('scBright')?.value||50)-50)*1.5;
+  const c=document.getElementById('scC'); if(!c)return;
+  const mw=Math.min(S.scImg.width,380),mh=Math.min(S.scImg.height,280);
+  c.width=mw;c.height=mh;
+  const ctx=c.getContext('2d');
+  ctx.drawImage(S.scImg,0,0,mw,mh);
+  if(mode==='original')return;
+  const id=ctx.getImageData(0,0,mw,mh),d=id.data;
+  for(let i=0;i<d.length;i+=4){
+    let r=d[i],g=d[i+1],b=d[i+2];
+    if(mode==='bw'){const gv=0.299*r+0.587*g+0.114*b;const bw=gv>128?255:0;r=g=b=bw;}
+    else if(mode==='gray'){const gv=0.299*r+0.587*g+0.114*b;r=g=b=gv;}
+    else if(mode==='color'){const max=Math.max(r,g,b);r=Math.min(255,r+(max-r)*0.3);}
+    r=(r-128)*1.2+128+bright; g=(g-128)*1.2+128+bright; b=(b-128)*1.2+128+bright;
+    d[i]=Math.min(255,Math.max(0,r));d[i+1]=Math.min(255,Math.max(0,g));d[i+2]=Math.min(255,Math.max(0,b));
+  }
+  ctx.putImageData(id,0,0);
+}
+
+/* ══════════════ BACKGROUND REMOVE ══════════════ */
+function loadBgRm(file){loadImg(file,img=>{S.bgImg=img;fitCanvas('bgOrigC',img,380,260);applyBgRm();});}
+function selSwatch(el,col){
+  document.querySelectorAll('#bgSwatches .swatch').forEach(s=>s.classList.remove('on'));
+  el.classList.add('on'); S.bgColor=col; applyBgRm();
+}
+function applyBgRm(){
+  if(!S.bgImg)return;
+  const tol=parseInt(document.getElementById('bgTol')?.value||40);
+  const c=document.getElementById('bgC'); if(!c)return;
+  const mw=Math.min(S.bgImg.width,380),mh=Math.min(S.bgImg.height,260);
+  c.width=mw;c.height=mh;
+  const ctx=c.getContext('2d');
+  if(S.bgColor==='transparent'){
+    for(let y=0;y<mh;y+=10)for(let x=0;x<mw;x+=10){
+      ctx.fillStyle=(Math.floor(x/10)+Math.floor(y/10))%2===0?'#bbb':'#fff';
+      ctx.fillRect(x,y,10,10);
+    }
+  } else if(S.bgColor==='gradient'){
+    const grd=ctx.createLinearGradient(0,0,mw,mh);
+    grd.addColorStop(0,'#667eea');grd.addColorStop(1,'#764ba2');
+    ctx.fillStyle=grd;ctx.fillRect(0,0,mw,mh);
+  } else {ctx.fillStyle=S.bgColor;ctx.fillRect(0,0,mw,mh);}
+  ctx.drawImage(S.bgImg,0,0,mw,mh);
+  const id=ctx.getImageData(0,0,mw,mh),d=id.data;
+  const br=d[0],bg_=d[1],bb=d[2];
+  for(let i=0;i<d.length;i+=4){
+    const dist=Math.abs(d[i]-br)+Math.abs(d[i+1]-bg_)+Math.abs(d[i+2]-bb);
+    if(dist<tol*3)d[i+3]=0;
+  }
+  ctx.putImageData(id,0,0);
+}
+
+/* ══════════════ COMPRESS ══════════════ */
+function loadCompress(file){
+  S.cmpOrig=file.size;
+  document.getElementById('cmpOrigSz').textContent=fmtSz(file.size);
+  loadImg(file,img=>{S.cmpImg=img;document.getElementById('cmpDim').textContent=img.width+'×'+img.height;updateCompress();});
+}
+function updateCompress(){
+  if(!S.cmpImg)return;
+  const q=parseInt(document.getElementById('cmpQ')?.value||75)/100;
+  const fmt=document.getElementById('cmpFmt')?.value||'jpeg';
+  const maxW=parseInt(document.getElementById('cmpW')?.value||1920);
+  const c=document.getElementById('cmpC'); if(!c)return;
+  const s=Math.min(1,maxW/S.cmpImg.width,400/S.cmpImg.width);
+  c.width=Math.round(S.cmpImg.width*s);c.height=Math.round(S.cmpImg.height*s);
+  c.getContext('2d').drawImage(S.cmpImg,0,0,c.width,c.height);
+  const du=c.toDataURL('image/'+fmt,q);
+  const bytes=Math.round((du.length-22)*3/4);
+  document.getElementById('cmpNewSz').textContent=fmtSz(bytes);
+  const sav=Math.round((1-bytes/S.cmpOrig)*100);
+  document.getElementById('cmpSave').textContent=sav>0?sav+'% saved':'~same';
+}
+function doCompress(){
+  if(!S.cmpImg){showToast('Upload an image first','warn');return;}
+  const q=parseInt(document.getElementById('cmpQ')?.value||75)/100;
+  const fmt=document.getElementById('cmpFmt')?.value||'jpeg';
+  const maxW=parseInt(document.getElementById('cmpW')?.value||1920);
+  const c=document.createElement('canvas');
+  const s=Math.min(1,maxW/S.cmpImg.width);
+  c.width=Math.round(S.cmpImg.width*s);c.height=Math.round(S.cmpImg.height*s);
+  c.getContext('2d').drawImage(S.cmpImg,0,0,c.width,c.height);
+  dl(c.toDataURL('image/'+fmt,q),'compressed.'+(fmt==='jpeg'?'jpg':fmt));
+}
+function fmtSz(b){return b>1024*1024?(b/1024/1024).toFixed(1)+'MB':Math.round(b/1024)+'KB';}
+
+/* ══════════════ CONVERT ══════════════ */
+function loadConvert(files){
+  S.cvtFiles=Array.from(files);
+  document.getElementById('cvtList').innerHTML=S.cvtFiles.map((f,i)=>`
+    <div style="display:flex;align-items:center;gap:.75rem;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.7rem 1rem">
+      <span>🖼️</span>
+      <span style="flex:1;font-size:.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.name}</span>
+      <span style="font-size:.78rem;color:var(--text3);flex-shrink:0">${fmtSz(f.size)}</span>
+    </div>`).join('');
+}
+function doConvert(){
+  if(!S.cvtFiles.length){showToast('Upload images first','warn');return;}
+  const fmt=document.getElementById('cvtTo')?.value||'jpeg';
+  const q=parseInt(document.getElementById('cvtQ')?.value||90)/100;
+  const ext=fmt==='jpeg'?'jpg':fmt;
+  S.cvtFiles.forEach(file=>{
+    loadImg(file,img=>{
+      const c=document.createElement('canvas');c.width=img.width;c.height=img.height;
+      c.getContext('2d').drawImage(img,0,0);
+      dl(c.toDataURL('image/'+fmt,q),file.name.replace(/\.[^.]+$/,'')+'.'+ext);
+    });
+  });
+  showToast(`Converting ${S.cvtFiles.length} file(s)…`);
+}
+
+/* ══════════════ ENHANCE ══════════════ */
+function loadEnhance(file){loadImg(file,img=>{S.enhImg=img;showPH('enhPH',false);applyEnhance();});}
+function applyEnhance(){
+  if(!S.enhImg)return;
+  const br=parseInt(document.getElementById('eBr')?.value||0);
+  const ct=parseInt(document.getElementById('eCt')?.value||0)/100+1;
+  const sat=parseInt(document.getElementById('eSat')?.value||0)/100+1;
+  const filter=document.getElementById('eFilter')?.value||'none';
+  const ratio=document.getElementById('eRatio')?.value||'none';
+  let iw=S.enhImg.width,ih=S.enhImg.height;
+  let sx=0,sy=0,sw=iw,sh=ih;
+  if(ratio!=='none'){
+    const[rw,rh]=ratio.split(':').map(Number);
+    const t=rw/rh;
+    if(iw/ih>t){sw=Math.round(ih*t);sx=(iw-sw)/2;}else{sh=Math.round(iw/t);sy=(ih-sh)/2;}
+  }
+  const s=Math.min(1,480/sw,360/sh);
+  const c=document.getElementById('enhC'); if(!c)return;
+  c.width=Math.round(sw*s);c.height=Math.round(sh*s);
+  const ctx=c.getContext('2d');
+  ctx.drawImage(S.enhImg,sx,sy,sw,sh,0,0,c.width,c.height);
+  const id=ctx.getImageData(0,0,c.width,c.height),d=id.data;
+  for(let i=0;i<d.length;i+=4){
+    let r=d[i],g=d[i+1],b=d[i+2];
+    if(filter==='grayscale'){const gv=0.299*r+0.587*g+0.114*b;r=g=b=gv;}
+    else if(filter==='sepia'){const nr=r*0.393+g*0.769+b*0.189,ng=r*0.349+g*0.686+b*0.168,nb=r*0.272+g*0.534+b*0.131;r=nr;g=ng;b=nb;}
+    else if(filter==='vivid'){r=Math.min(255,r*1.2);g=Math.min(255,g*1.1);b=b*0.9;}
+    else if(filter==='cool'){r=r*0.88;b=Math.min(255,b*1.12);}
+    else if(filter==='warm'){r=Math.min(255,r*1.1);b=b*0.9;}
+    else if(filter==='invert'){r=255-r;g=255-g;b=255-b;}
+    const gv=0.299*r+0.587*g+0.114*b;
+    r=gv+(r-gv)*sat;g=gv+(g-gv)*sat;b=gv+(b-gv)*sat;
+    r=(r-128)*ct+128+br;g=(g-128)*ct+128+br;b=(b-128)*ct+128+br;
+    d[i]=Math.min(255,Math.max(0,r));d[i+1]=Math.min(255,Math.max(0,g));d[i+2]=Math.min(255,Math.max(0,b));
+  }
+  ctx.putImageData(id,0,0);
+}
+function resetEnhance(){
+  ['eBr','eCt','eSat','eShp'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=0;});
+  ['eBrV','eCtV','eSatV','eShpV'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=0;});
+  const ef=document.getElementById('eFilter');if(ef)ef.value='none';
+  const er=document.getElementById('eRatio');if(er)er.value='none';
+  applyEnhance();
+}
+
+/* ══════════════ ID CARD ══════════════ */
+const ID_THEMES={
+  blue:{bg:'#0f2463',accent:'#3b82f6',stripe:'#1e3a8a',text:'#fff',sub:'rgba(255,255,255,0.6)'},
+  dark:{bg:'#0f172a',accent:'#06b6d4',stripe:'#1e293b',text:'#f1f5f9',sub:'rgba(241,245,249,0.5)'},
+  green:{bg:'#052e16',accent:'#22c55e',stripe:'#14532d',text:'#fff',sub:'rgba(255,255,255,0.6)'},
+  red:{bg:'#450a0a',accent:'#f87171',stripe:'#7f1d1d',text:'#fff',sub:'rgba(255,255,255,0.6)'},
+  gold:{bg:'#1c1400',accent:'#fbbf24',stripe:'#451a03',text:'#fff',sub:'rgba(255,255,255,0.6)'},
+};
+function loadIDPhoto(file){loadImg(file,img=>{S.idPhoto=img;renderID();});}
+function renderID(){
+  const c=document.getElementById('idC'); if(!c)return;
+  const W=640,H=400; c.width=W;c.height=H;
+  const ctx=c.getContext('2d');
+  const th=ID_THEMES[document.getElementById('idTheme')?.value||'blue'];
+  // bg
+  ctx.fillStyle=th.bg;ctx.fillRect(0,0,W,H);
+  // stripe
+  ctx.fillStyle=th.stripe;ctx.fillRect(0,0,W,72);
+  // accent bar
+  ctx.fillStyle=th.accent;ctx.fillRect(0,H-6,W,6);
+  // org name
+  ctx.fillStyle=th.accent;ctx.font='bold 18px Outfit,sans-serif';ctx.textAlign='left';
+  ctx.fillText(document.getElementById('idOrg')?.value||'Organization',20,46);
+  // photo box
+  ctx.fillStyle='rgba(255,255,255,0.08)';roundRect(ctx,20,86,130,170,10);ctx.fill();
+  if(S.idPhoto){
+    ctx.save();roundRect(ctx,20,86,130,170,10);ctx.clip();
+    const sc=Math.min(130/S.idPhoto.width,170/S.idPhoto.height);
+    const sw=S.idPhoto.width*sc,sh=S.idPhoto.height*sc;
+    ctx.drawImage(S.idPhoto,20+(130-sw)/2,86+(170-sh)/2,sw,sh);
+    ctx.restore();
+  } else {
+    ctx.fillStyle='rgba(255,255,255,0.2)';ctx.font='40px serif';ctx.textAlign='center';ctx.fillText('👤',85,180);
+  }
+  ctx.strokeStyle=th.accent+'88';ctx.lineWidth=1.5;roundRect(ctx,20,86,130,170,10);ctx.stroke();
+  // details
+  ctx.textAlign='left';
+  ctx.fillStyle=th.text;ctx.font='bold 22px Outfit,sans-serif';
+  ctx.fillText(document.getElementById('idName')?.value||'Full Name',168,120);
+  ctx.fillStyle=th.accent;ctx.font='600 14px Outfit,sans-serif';
+  ctx.fillText(document.getElementById('idRole')?.value||'Role',168,148);
+  ctx.fillStyle=th.sub;ctx.font='13px Outfit,sans-serif';
+  const dept=document.getElementById('idDept')?.value||'';
+  if(dept)ctx.fillText('Dept: '+dept,168,172);
+  // divider
+  ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(168,182);ctx.lineTo(610,182);ctx.stroke();
+  // fields
+  const fields=[
+    ['ID No.',document.getElementById('idNum')?.value||'—'],
+    ['Valid Until',document.getElementById('idExp')?.value||'—'],
+    ['Blood Group',document.getElementById('idBlood')?.value||'—'],
+    ['Phone',document.getElementById('idPhone')?.value||'—'],
+  ];
+  fields.forEach(([k,v],i)=>{
+    const x=168+(i%2)*220, y=210+Math.floor(i/2)*40;
+    ctx.fillStyle=th.sub;ctx.font='11px Outfit,sans-serif';ctx.fillText(k,x,y);
+    ctx.fillStyle=th.text;ctx.font='600 14px Outfit,sans-serif';ctx.fillText(v,x,y+18);
+  });
+  // barcode placeholder
+  for(let x=168;x<570;x+=4){
+    ctx.fillStyle=`rgba(255,255,255,${Math.random()*0.35+0.05})`;
+    ctx.fillRect(x,310,Math.floor(Math.random()*3)+1,36);
+  }
+  ctx.fillStyle=th.sub;ctx.font='10px JetBrains Mono,monospace';ctx.textAlign='center';
+  ctx.fillText('* AUTHORIZED PERSONNEL ONLY *',380,360);
+}
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
+}
+
+/* ══════════════ WATERMARK ══════════════ */
+function loadWM(file){loadImg(file,img=>{S.wmImg=img;applyWM();});}
+function applyWM(){
+  if(!S.wmImg)return;
+  const c=document.getElementById('wmC'); if(!c)return;
+  const s=Math.min(1,480/S.wmImg.width,360/S.wmImg.height);
+  c.width=Math.round(S.wmImg.width*s);c.height=Math.round(S.wmImg.height*s);
+  const ctx=c.getContext('2d');
+  ctx.drawImage(S.wmImg,0,0,c.width,c.height);
+  const txt=document.getElementById('wmTxt')?.value||'© Watermark';
+  const op=(document.getElementById('wmOp')?.value||40)/100;
+  const pos=document.getElementById('wmPos')?.value||'center';
+  const sz=parseInt(document.getElementById('wmSz')?.value||32);
+  const col=document.getElementById('wmCol')?.value||'white';
+  ctx.globalAlpha=op;
+  ctx.fillStyle=col;ctx.font=`bold ${sz}px Outfit,sans-serif`;
+  if(pos==='tile'){
+    ctx.save();ctx.translate(c.width/2,c.height/2);ctx.rotate(-Math.PI/6);
+    for(let y=-c.height;y<c.height*2;y+=sz*3)
+      for(let x=-c.width;x<c.width*2;x+=ctx.measureText(txt).width+20)
+        ctx.fillText(txt,x,y);
+    ctx.restore();
+  } else {
+    const pad=20;let x=c.width/2,y=c.height/2;
+    if(pos==='br'){x=c.width-pad;y=c.height-pad-sz/4;ctx.textAlign='right';}
+    else if(pos==='bl'){x=pad;y=c.height-pad-sz/4;ctx.textAlign='left';}
+    else if(pos==='tr'){x=c.width-pad;y=sz+pad;ctx.textAlign='right';}
+    else if(pos==='tl'){x=pad;y=sz+pad;ctx.textAlign='left';}
+    else{ctx.textAlign='center';y=c.height/2+sz/3;}
+    ctx.fillText(txt,x,y);
+  }
+  ctx.globalAlpha=1;
+}
+
+/* ══════════════ QR CODE ══════════════ */
+function renderQR(){
+  const txt=document.getElementById('qrText')?.value||'https://example.com';
+  const fg=document.getElementById('qrFg')?.value||'#000000';
+  const bg=document.getElementById('qrBg')?.value||'#ffffff';
+  const sz=parseInt(document.getElementById('qrSz')?.value||512);
+  const c=document.getElementById('qrC'); if(!c)return;
+  c.width=sz;c.height=sz;
+  const ctx=c.getContext('2d');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  // Generate QR pattern using a simple approach
+  const qrData=generateQRMatrix(txt);
+  if(!qrData){
+    ctx.fillStyle=fg;ctx.font='bold 16px Outfit';ctx.textAlign='center';
+    ctx.fillText('QR Code',sz/2,sz/2);
+    return;
+  }
+  const n=qrData.length;
+  const cellSz=Math.floor(sz*0.85/n);
+  const off=Math.floor((sz-cellSz*n)/2);
+  ctx.fillStyle=fg;
+  qrData.forEach((row,r)=>row.forEach((cell,col)=>{
+    if(cell)ctx.fillRect(off+col*cellSz,off+r*cellSz,cellSz,cellSz);
+  }));
+}
+
+function generateQRMatrix(text){
+  // Simplified QR-like pattern for demo
+  const size=21;const m=[];
+  for(let i=0;i<size;i++){m.push([]);for(let j=0;j<size;j++)m[i].push(0);}
+  // Finder patterns
+  const fp=(r,c)=>{
+    for(let i=0;i<7;i++)for(let j=0;j<7;j++){
+      if(i===0||i===6||j===0||j===6||(i>=2&&i<=4&&j>=2&&j<=4))m[r+i][c+j]=1;
+    }
+  };
+  fp(0,0);fp(0,size-7);fp(size-7,0);
+  // Timing
+  for(let i=8;i<size-8;i++){m[6][i]=i%2===0?1:0;m[i][6]=i%2===0?1:0;}
+  // Data based on text hash
+  let hash=0;for(const c of text){hash=(hash*31+c.charCodeAt(0))&0xffffffff;}
+  for(let i=0;i<size;i++)for(let j=0;j<size;j++){
+    if(!m[i][j]&&!(i<=8&&(j<=8||j>=size-8))&&!(j<=8&&i>=size-8))
+      m[i][j]=(hash^(i*size+j)*2654435761)%3===0?1:0;
+  }
+  return m;
+}
+
+/* ══════════════ COLOR PICKER ══════════════ */
+function loadColorPick(file){loadImg(file,img=>{S.cpImg=img;fitCanvas('cpC',img,480,320);extractPalette();});}
+function pickColor(e){
+  if(!S.cpImg)return;
+  const c=document.getElementById('cpC'); if(!c)return;
+  const rect=c.getBoundingClientRect();
+  const x=Math.round((e.clientX-rect.left)*c.width/rect.width);
+  const y=Math.round((e.clientY-rect.top)*c.height/rect.height);
+  const d=c.getContext('2d').getImageData(x,y,1,1).data;
+  const hex=rgbToHex(d[0],d[1],d[2]);
+  const hsl=rgbToHsl(d[0],d[1],d[2]);
+  document.getElementById('cpPicked').style.display='block';
+  document.getElementById('cpSwatch').style.background=hex;
+  document.getElementById('cpHex').textContent=hex;
+  document.getElementById('cpRgb').textContent=`rgb(${d[0]},${d[1]},${d[2]})`;
+  document.getElementById('cpHsl').textContent=`hsl(${hsl[0]},${hsl[1]}%,${hsl[2]}%)`;
+}
+function extractPalette(){
+  if(!S.cpImg)return;
+  const c=document.getElementById('cpC'); if(!c)return;
+  const ctx=c.getContext('2d');
+  const iw=c.width,ih=c.height;
+  const samples=[];const step=Math.max(1,Math.floor(Math.min(iw,ih)/12));
+  for(let y=0;y<ih;y+=step)for(let x=0;x<iw;x+=step){
+    const d=ctx.getImageData(x,y,1,1).data;
+    if(d[3]>128)samples.push([d[0],d[1],d[2]]);
+  }
+  // k-means simple: pick 8 random distinct samples
+  const palette=[];const seen=new Set();
+  samples.sort(()=>Math.random()-0.5);
+  for(const s of samples){
+    const hex=rgbToHex(...s);
+    if(!seen.has(hex)&&palette.length<8){seen.add(hex);palette.push(hex);}
+  }
+  S.cpColors=palette;
+  const el=document.getElementById('cpPalette'); if(!el)return;
+  el.innerHTML=palette.map(h=>`
+    <div onclick="copyTxt('${h}')" title="Copy ${h}" style="cursor:pointer;text-align:center">
+      <div style="width:44px;height:44px;border-radius:10px;background:${h};border:2px solid rgba(255,255,255,0.1);transition:transform .2s" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform=''"></div>
+      <div style="font-size:.62rem;color:var(--text3);margin-top:3px;font-family:var(--mono)">${h}</div>
+    </div>`).join('');
+}
+function rgbToHex(r,g,b){return '#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');}
+function rgbToHsl(r,g,b){
+  r/=255;g/=255;b/=255;
+  const max=Math.max(r,g,b),min=Math.min(r,g,b);
+  let h,s;const l=(max+min)/2;
+  if(max===min){h=s=0;}else{
+    const d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);
+    if(max===r)h=(g-b)/d+(g<b?6:0);
+    else if(max===g)h=(b-r)/d+2;
+    else h=(r-g)/d+4;
+    h/=6;
+  }
+  return[Math.round(h*360),Math.round(s*100),Math.round(l*100)];
+}
+function copyTxt(t){navigator.clipboard?.writeText(t).then(()=>showToast('Copied: '+t));}
+
+/* ══════════════ RESIZE ══════════════ */
+function loadResize(file){
+  loadImg(file,img=>{
+    S.rzImg=img;S.rzRatio=img.width/img.height;
+    const wEl=document.getElementById('rzW'),hEl=document.getElementById('rzH');
+    if(wEl)wEl.value=img.width;if(hEl)hEl.value=img.height;
+    const od=document.getElementById('rzOrigDim');if(od)od.textContent=img.width+'×'+img.height;
+    updateRzPreview();
+  });
+}
+function syncRz(changed){
+  if(!S.rzImg)return;
+  const lock=document.getElementById('rzLock')?.value==='yes';
+  if(lock){
+    if(changed==='w'){
+      const w=parseInt(document.getElementById('rzW')?.value||S.rzImg.width);
+      const h=document.getElementById('rzH');if(h)h.value=Math.round(w/S.rzRatio);
+    } else {
+      const h=parseInt(document.getElementById('rzH')?.value||S.rzImg.height);
+      const w=document.getElementById('rzW');if(w)w.value=Math.round(h*S.rzRatio);
+    }
+  }
+  updateRzPreview();
+}
+function applyRzPreset(){
+  const v=document.getElementById('rzPreset')?.value; if(!v)return;
+  const[w,h]=v.split('x').map(Number);
+  const wEl=document.getElementById('rzW'),hEl=document.getElementById('rzH');
+  if(wEl)wEl.value=w;if(hEl)hEl.value=h;
+  updateRzPreview();
+}
+function updateRzPreview(){
+  if(!S.rzImg)return;
+  const nw=parseInt(document.getElementById('rzW')?.value||S.rzImg.width);
+  const nh=parseInt(document.getElementById('rzH')?.value||S.rzImg.height);
+  const c=document.getElementById('rzC'); if(!c)return;
+  const s=Math.min(1,480/nw,320/nh);
+  c.width=Math.round(nw*s);c.height=Math.round(nh*s);
+  c.getContext('2d').drawImage(S.rzImg,0,0,c.width,c.height);
+  const nd=document.getElementById('rzNewDim');if(nd)nd.textContent=nw+'×'+nh;
+}
+function doResize(){
+  if(!S.rzImg){showToast('Upload an image first','warn');return;}
+  const nw=parseInt(document.getElementById('rzW')?.value||S.rzImg.width);
+  const nh=parseInt(document.getElementById('rzH')?.value||S.rzImg.height);
+  const c=document.createElement('canvas');c.width=nw;c.height=nh;
+  c.getContext('2d').drawImage(S.rzImg,0,0,nw,nh);
+  dl(c.toDataURL('image/jpeg',0.95),'resized.jpg');
+}
+
+/* ══════════════ METADATA ══════════════ */
+function loadMeta(file){
+  S.mdFile=file;
+  loadImg(file,img=>{
+    S.mdImg=img;
+    const info={
+      'File Name':file.name,
+      'File Size':fmtSz(file.size),
+      'File Type':file.type||'Unknown',
+      'Dimensions':`${img.width} × ${img.height} px`,
+      'Megapixels':((img.width*img.height)/1e6).toFixed(2)+' MP',
+      'Aspect Ratio':gcd(img.width,img.height)+' ratio',
+      'Last Modified':new Date(file.lastModified).toLocaleString(),
+    };
+    const tbl=document.getElementById('mdTable'); if(!tbl)return;
+    tbl.innerHTML=Object.entries(info).map(([k,v])=>`
+      <div style="display:flex;align-items:center;padding:.6rem 1.25rem;border-bottom:1px solid var(--border)">
+        <span style="font-size:.78rem;color:var(--text3);width:40%;font-weight:600">${k}</span>
+        <span style="font-size:.85rem;font-family:var(--mono);color:var(--text)">${v}</span>
+      </div>`).join('');
+    document.getElementById('mdResults').style.display='block';
+    showToast('Metadata loaded');
+  });
+}
+function gcd(a,b){while(b){const t=b;b=a%b;a=t;}return a;}
+function stripMeta(){
+  if(!S.mdImg){showToast('Upload an image first','warn');return;}
+  const c=document.createElement('canvas');c.width=S.mdImg.width;c.height=S.mdImg.height;
+  c.getContext('2d').drawImage(S.mdImg,0,0);
+  dl(c.toDataURL('image/jpeg',0.95),'privacy_stripped.jpg');
+  showToast('Downloaded! EXIF data stripped ✓');
+}
+function copyMeta(){
+  if(!S.mdFile){showToast('Upload an image first','warn');return;}
+  const tbl=document.getElementById('mdTable');
+  if(tbl)navigator.clipboard?.writeText(tbl.innerText).then(()=>showToast('Metadata copied to clipboard'));
+}
+
+/* ══════════════ DOWNLOAD ══════════════ */
+function dlCanvas(id,name,png=false){
+  const c=document.getElementById(id);
+  if(!c||c.width===0){showToast('Upload an image first','warn');return;}
+  const fmt=png?'image/png':'image/jpeg';
+  dl(c.toDataURL(fmt,0.95),name);
+  showToast('Downloaded successfully!');
+}
+function dl(dataUrl,name){
+  const a=document.createElement('a');a.href=dataUrl;a.download=name;a.click();
+}
+
+/* ══════════════ TOAST ══════════════ */
+let toastT;
+function showToast(msg,type='ok'){
+  const el=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  el.style.borderColor=type==='warn'?'rgba(245,158,11,0.4)':'rgba(16,185,129,0.4)';
+  el.style.color=type==='warn'?'#fbbf24':'#34d399';
+  el.classList.add('show');
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>el.classList.remove('show'),2800);
+}
+
+/* ══════════════ HAMBURGER ══════════════ */
+function toggleMenu(){
+  // placeholder for mobile nav
+}
+
+/* ══════════════ SCROLL REVEAL ══════════════ */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* ══════════════ INIT ══════════════ */
+renderCards();
+</script>
+</body>
+</html>
